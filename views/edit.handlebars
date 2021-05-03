@@ -10,18 +10,35 @@
             <i class="fas fa-utensils pr-2"></i>
             類別：
           </span>
-          <input type="text" placeholder="category" name="category" value={{restaurant.category}}>
+          <label for="category"></label>
+          <input list="categories" placeholder="category... " name="category" value={{restaurant.category}}>
+          <datalist id="categories">
+            <option>美式</option>
+            <option>義式</option>
+            <option>日式</option>
+            <option>中式</option>
+            <option>韓式</option>
+            <option>餐酒館</option>
+          </datalist>
         </p>
-
+        <p class="mb-1">
+          <span class="text-secondary">
+            <i class="fas fa-star fa-xs pr-2"></i>
+            評價：
+          </span>
+          <input type="text" placeholder="Rating... " name="rating" value={{restaurant.rating}} step="0.1" min="0.0"
+            max="5.0">
+        </p>
         <p class="mb-1">
           <span class="text-secondary">
             <i class="fas fa-map-marker-alt pr-2"></i>
             地址：
           </span>
-          <input type="text" placeholder="location" name="location" value={{restaurant.location}}>
-          <a href="{{restaurant.google_map}}" class="text-secondary" target="_blank">
+          <input type="text" placeholder="location... " name="location" value={{restaurant.location}}>
+          <span class="mx-2">
             <i class="fas fa-location-arrow pr-2 fa-xs"></i>
-          </a>
+            <input type="text" placeholder="Google map URL... " name="google_map" value={{restaurant.google_map}}>
+          </span>
         </p>
 
         <p class="mb-1">
@@ -29,14 +46,23 @@
             <i class="fas fa-mobile-alt pr-2"></i>
             電話：
           </span>
-          <input type="text" placeholder="phone" name="phone" value={{restaurant.phone}}>
+          <input type="text" placeholder="phone... " name="phone" value={{restaurant.phone}}>
         </p>
 
-        <p class="mb-5">
-          <textarea placeholder="description" name="description" rows="8" cols="150">
+        <p class="my-2">
+          <textarea placeholder="description... " name="description" rows="8" cols="150">
             {{restaurant.description}}
           </textarea>
         </p>
+
+        <p class="my-1">
+          <span class="text-secondary">
+            <i class="fas fa-image pr-2" style="font-size: 20px;"></i>
+            圖片：
+          </span>
+          <input type="text" placeholder="image URL... " name="image" value={{restaurant.image}}>
+        </p>
+
 
         <img class="rounded mx-auto d-block mb-4 w-100" src="{{restaurant.image}}" alt="{{restaurant.name}}"
           style="max-width: 600px;">

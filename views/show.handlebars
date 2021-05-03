@@ -10,7 +10,14 @@
         </span>
         {{restaurant.category}}
       </p>
+      <p class="mb-1">
+        <span class="text-secondary">
 
+          <i class="fas fa-star fa-xs pr-2"></i>
+          評價：
+        </span>
+        {{restaurant.rating}}
+      </p>
       <p class="mb-1">
         <span class="text-secondary">
           <i class="fas fa-map-marker-alt pr-2"></i>
@@ -37,7 +44,13 @@
       <img class="rounded mx-auto d-block mb-4 w-100" src="{{restaurant.image}}" alt="{{restaurant.name}}"
         style="max-width: 600px;">
       <div class="mt-2 d-flex justify-content-end">
-        <a href="/"><button type="button" class="btn btn-secondary">Back</button></a>
+        <a href="/restaurants/{{restaurant._id}}/edit"><button type="button"
+            class="btn btn-secondary mr-1">Edit</button></a>
+        <a href="/"><button type="button" class="btn btn-primary mr-1">Back</button></a>
+        <form action="/restaurants/{{restaurant._id}}?_method=DELETE" method="POST" class="mr-1"
+          style="display:inline;">
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
       </div>
     </div>
 

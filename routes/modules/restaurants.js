@@ -43,6 +43,7 @@ router.get("/:restaurant_id/edit", (req, res) => {
 router.put("/:restaurant_id", (req, res) => {
   const id = req.params.restaurant_id
   const modified = req.body
+  console.log(modified)
 
   return restaurants.findById(id)
     .then(restaurant => {
