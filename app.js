@@ -2,28 +2,18 @@
 const express = require("express")
 const app = express()
 const exphbs = require("express-handlebars")
-const mongoose = require("mongoose")
+
 const bodyParser = require("body-parser")
 
 const restaurants = require("./models/restaurant")
 app.engine("handlebars", exphbs({ defaultLayout: "main" }))
 app.set("view engine", "handlebars")
+require("./config/mongoose")
 // define server related variables
 const port = 3000
 
 app.use(bodyParser.urlencoded({ extended: true }))
-mongoose.connect("mongodb://localhost/restaurants", { useNewUrlParser: true, useUnifiedTopology: true })
 
-const db = mongoose.connection
-
-// fail to connect
-db.on("error", () => {
-  console.log("mongodb error!!!")
-})
-// succeed in connecting
-db.once("open", () => {
-  console.log("mongodb connected!!!")
-})
 
 // static files
 app.use(express.static("public"))
