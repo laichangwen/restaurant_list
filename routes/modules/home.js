@@ -20,4 +20,15 @@ router.get("/search", (req, res) => {
   }
 })
 
+router.post("/", (req, res) => {
+  console.log(req.body.options)
+  // if (req.query.keyword) {
+  //   const keyword = req.query.keyword
+  //   restaurants.find({ name: { $regex: keyword, $options: 'i' } })
+  //     .lean()
+  //     .then(restaurant => res.render("index", { restaurant, keyword }))
+  //     .catch(error => console.log(error))
+  // }
+})
+
 module.exports = router
