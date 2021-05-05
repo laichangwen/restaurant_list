@@ -1,6 +1,13 @@
-<form action="/restaurants/{{restaurant._id}}?_method=PUT" method="POST">
-  <h1 class="mb-1 restaurant-show-title"><input type="text" placeholder="name" name="name" value={{restaurant.name}}>
-  </h1>
+<form action="/restaurants/{{restaurant._id}}?_method=PUT" method="POST" class="needs-validation" novalidate>
+  <div>
+    <h1 class="mb-1 restaurant-show-title"><input type="text" placeholder="name" name="name" value={{restaurant.name}}
+        required="required">
+      <div class="invalid-feedback">
+        <h5 style="color:rgb(243, 227, 86);">Please provide a valid restaurant name.</h5>
+      </div>
+    </h1>
+
+  </div>
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-10 mx-auto">
@@ -10,8 +17,15 @@
             <i class="fas fa-utensils pr-2"></i>
             類別：
           </span>
-          <label for="category"></label>
-          <input list="categories" placeholder="category... " name="category" value={{restaurant.category}}>
+          <label for="category">
+            <div>
+              <input list="categories" placeholder="category... " name="category" value={{restaurant.category}}
+                required="required">
+              <div class="invalid-feedback">
+                Please provide a valid restaurant category.
+              </div>
+            </div>
+          </label>
           <datalist id="categories">
             <option>美式</option>
             <option>義式</option>
@@ -26,8 +40,13 @@
             <i class="fas fa-star fa-xs pr-2"></i>
             評價：
           </span>
+        <div>
           <input type="text" placeholder="Rating... " name="rating" value={{restaurant.rating}} step="0.1" min="0.0"
-            max="5.0">
+            max="5.0" required="required">
+          <div class="invalid-feedback">
+            Please provide a valid restaurant rating.
+          </div>
+        </div>
         </p>
         <p class="mb-1">
           <span class="text-secondary">
@@ -49,11 +68,14 @@
           <input type="text" placeholder="phone... " name="phone" value={{restaurant.phone}}>
         </p>
 
-        <p class="my-2">
-          <textarea placeholder="description... " name="description" rows="8" cols="150">
-            {{restaurant.description}}
-          </textarea>
-        </p>
+        <div class="form-group my-2">
+          <label for="description"></label>
+          <textarea placeholder="請輸入餐廳簡介 ..." class="form-control" name="description" rows="8" cols="150"
+            id="description" required="required"></textarea>
+          <div class="invalid-feedback">
+            Please provide a valid restaurant description.
+          </div>
+        </div>
 
         <p class="my-1">
           <span class="text-secondary">
@@ -74,3 +96,24 @@
     </div>
   </div>
 </form>
+
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function () {
+    'use strict';
+    window.addEventListener('load', function () {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function (form) {
+        form.addEventListener('submit', function (event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
+</script>

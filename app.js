@@ -28,10 +28,6 @@ app.use(express.static("public"))
 // Handle request and response
 app.use(routes)
 
-app.post('/', function (req, res) {
-  console.log(req.body.example);
-});
-
 // Start and listen to express server
 app.listen(port, () => {
   console.log(`Listen on http://localhost:${port}`)
